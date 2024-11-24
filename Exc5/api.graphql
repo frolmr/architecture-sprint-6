@@ -1,0 +1,46 @@
+type Query {
+  getClient(id: String!): Client
+  getClientDocuments(id: String!): [Document]
+  getClientRelatives(id: String!): [Relative]
+}
+
+type Client {
+  id: String!
+  name: String
+  age: Int
+}
+
+type Document {
+  id: String!
+  type: String
+  number: String
+  issueDate: String
+  expiryDate: String
+}
+
+type Relative {
+  id: String!
+  relationType: String
+  name: String
+  age: Int
+}
+
+query getClient($id: ID!) {
+  client(id: $id) {
+    id: string
+    name: string
+    age: string
+  }
+}
+
+query getClientDocuments($id: ID!) {
+	documents(id: $id) {
+		data: [Document]!
+	}
+}
+
+query getRelatives($id: ID!) {
+	relatives(id: $id) {
+		data: [Relative]!
+	}
+}
